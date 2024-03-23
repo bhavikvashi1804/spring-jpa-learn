@@ -3,6 +3,7 @@ package com.bhavik.demo.controller;
 
 import com.bhavik.demo.entity.Person;
 import com.bhavik.demo.repo.PersonRepo;
+import com.bhavik.demo.util.JpaSearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,17 @@ public class PersonController {
         else{
             personList = personRepo.getAllPerson();
         }
+        return  personList;
+    }
+
+    @GetMapping("/my")
+    public List<Person> getPersonList1(@RequestParam String name){
+        List<Person> personList = new ArrayList<>();
+        personList = personRepo.personList(
+                new JpaSearchCriteria<>("firstName",name),
+                new JpaSearchCriteria<>("age", JpaSearchCriteria.DBOperation.EQ, JpaSearchCriteria.Type.MANDATORY, 25)
+        );
+
         return  personList;
     }
 }

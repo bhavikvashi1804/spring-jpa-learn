@@ -1,13 +1,13 @@
 package com.bhavik.demo.repo;
 
 import com.bhavik.demo.entity.Person;
+import com.bhavik.demo.util.JpaSearchCriteria;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class PersonRepo {
@@ -25,4 +25,17 @@ public class PersonRepo {
         Person person = entityManager.find(Person.class, id);
         return Collections.singletonList(person);
     }
+
+    public List<Person> personList(JpaSearchCriteria...jpaSearchCriteriaList) {
+
+        String jpqlQuery = "select e from Person e "
+                + JpaSearchCriteria.getJPQLQuery(jpaSearchCriteriaList);
+        Query query = entityManager.createQuery(jpqlQuery);
+        return query.getResultList();
+    }
+
+
+
+
+
 }
