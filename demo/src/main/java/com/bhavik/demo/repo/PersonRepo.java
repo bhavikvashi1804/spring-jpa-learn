@@ -27,10 +27,7 @@ public class PersonRepo {
     }
 
     public List<Person> personList(JpaSearchCriteria...jpaSearchCriteriaList) {
-
-        String jpqlQuery = "select e from Person e "
-                + JpaSearchCriteria.getJPQLQuery(jpaSearchCriteriaList);
-        Query query = entityManager.createQuery(jpqlQuery);
+        Query query = JpaSearchCriteria.getJPQLQuery(entityManager, "Person",jpaSearchCriteriaList);
         return query.getResultList();
     }
 
