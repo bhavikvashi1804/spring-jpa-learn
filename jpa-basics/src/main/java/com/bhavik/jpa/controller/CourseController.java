@@ -4,10 +4,7 @@ package com.bhavik.jpa.controller;
 import com.bhavik.jpa.entity.Course;
 import com.bhavik.jpa.repo.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -26,5 +23,27 @@ public class CourseController {
         else{
             return  courseRepo.getAllCourse();
         }
+    }
+
+    @DeleteMapping
+    public void deleteCourseById(@RequestParam Long id){
+        courseRepo.deleteById(id);
+    }
+
+    @GetMapping("/test")
+    public void test(){
+        courseRepo.test();
+    }
+
+    @PutMapping()
+    public Course updateCourse(@RequestBody Course course){
+        Course saved = courseRepo.save(course);
+        return  saved;
+    }
+
+    @PostMapping()
+    public Course storeCourse(@RequestBody Course course){
+        Course saved = courseRepo.save(course);
+        return  saved;
     }
 }
