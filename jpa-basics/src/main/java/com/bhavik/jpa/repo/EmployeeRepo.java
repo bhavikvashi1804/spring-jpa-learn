@@ -2,6 +2,8 @@ package com.bhavik.jpa.repo;
 
 
 import com.bhavik.jpa.inh.entity.Employee;
+import com.bhavik.jpa.inh.entity.FullTimeEmployee;
+import com.bhavik.jpa.inh.entity.PartTimeEmployee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -30,8 +32,13 @@ public class EmployeeRepo {
     }
 
     public List<Employee> getAllEmployees(){
-        Query query = em.createQuery("select e from Employee e", Employee.class);
-        List<Employee> employeeList = query.getResultList();
+        List<Employee> employeeList = new ArrayList<>();
+
+        Query query = em.createQuery("select e from FullTimeEmployee e", FullTimeEmployee.class);
+        employeeList.addAll(query.getResultList());
+        Query query1 = em.createQuery("select e from PartTimeEmployee e", PartTimeEmployee.class);
+        employeeList.addAll(query1.getResultList());
+
         return  employeeList;
     }
 

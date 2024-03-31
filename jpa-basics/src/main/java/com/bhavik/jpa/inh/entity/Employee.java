@@ -6,12 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@AllArgsConstructor  
 @NoArgsConstructor
-@Inheritance( strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Employee {
 
     @Id
