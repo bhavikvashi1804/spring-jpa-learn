@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance( strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn( name = "EMP_TYPE")
 public abstract class Employee {
 
     @Id
