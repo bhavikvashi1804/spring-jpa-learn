@@ -18,6 +18,10 @@ public class Student {
     @Column(name = "student_name")
     private String name;
 
+    @OneToOne()
+    @JoinColumn( name = "passport_id", unique = true)
+    private Passport passport;
+
     public Student(String name){
         this.name = name;
     }
