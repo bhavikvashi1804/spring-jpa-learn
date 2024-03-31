@@ -1,5 +1,6 @@
 package com.bhavik.jpa;
 
+import com.bhavik.jpa.entity.Passport;
 import com.bhavik.jpa.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -23,5 +24,8 @@ public class JpaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Student student = entityManager.find(Student.class, 1L);
 		System.out.println(student);
+
+		Passport passport = entityManager.find(Passport.class, 1L);
+		System.out.println(passport.getStudent());
 	}
 }
