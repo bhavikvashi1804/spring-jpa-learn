@@ -18,8 +18,8 @@ public class Student {
     @Column(name = "student_name")
     private String name;
 
-    @OneToOne()
-    @JoinColumn( name = "passport_id", unique = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn( name = "passport_id")
     private Passport passport;
 
     public Student(String name){
