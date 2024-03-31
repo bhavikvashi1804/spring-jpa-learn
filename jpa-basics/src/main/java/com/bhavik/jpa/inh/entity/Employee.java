@@ -11,12 +11,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance( strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn( name = "EMP_TYPE")
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "emp_id")
     private Long id;
 

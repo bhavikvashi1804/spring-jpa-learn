@@ -2,6 +2,7 @@ package com.bhavik.jpa.inh.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Getter
@@ -10,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
+@Table( name = "PARTTIME_EMP_DETAILS")
 public class PartTimeEmployee extends Employee{
 
     @Column( name = "emp_daily_wage")
