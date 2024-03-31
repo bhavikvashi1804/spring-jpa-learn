@@ -18,7 +18,7 @@ public class Student {
     @Column(name = "student_name")
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn( name = "passport_id")
     private Passport passport;
 
