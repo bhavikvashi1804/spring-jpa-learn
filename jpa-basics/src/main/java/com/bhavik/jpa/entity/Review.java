@@ -22,7 +22,7 @@ public class Review {
     @Column(name = "rating")
     private String rating;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "course_id")
     @JsonIgnore
     Course course;

@@ -2,6 +2,7 @@ package com.bhavik.jpa.repo;
 
 
 import com.bhavik.jpa.entity.Course;
+import com.bhavik.jpa.entity.Review;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -48,5 +49,21 @@ public class CourseRepo {
 
         course.setName("Updated Name by Bhavik");
         entityManager.merge(course);
+    }
+
+    @Transactional
+    public Course addDummyReviews(Long id){
+        Course course = entityManager.find(Course.class, id);
+
+        Review review1 = new Review("Best Course", "4");
+        Review review2 = new Review("Precise Course", "4" );
+
+        course.addReview(review1);
+        course.addReview(review2);
+
+        entityManager.persist(review1);
+        entityManager.persist(review2);
+
+        return  course;
     }
 }

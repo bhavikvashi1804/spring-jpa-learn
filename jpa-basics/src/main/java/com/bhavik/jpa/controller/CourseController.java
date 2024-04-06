@@ -46,4 +46,11 @@ public class CourseController {
         Course saved = courseRepo.save(course);
         return  saved;
     }
+
+
+    @PostMapping("reviews/add")
+    public Course addDummyReviews(@RequestParam Long id){
+        Course course = courseRepo.addDummyReviews(id);
+        return  course;
+    }
 }
