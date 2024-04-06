@@ -17,7 +17,7 @@ insert into student_tb_details (student_name, passport_id) values ('Meet Patel',
 insert into student_tb_details (student_name, passport_id) values ('Om Bhat', 4);
 
 
-insert into review_tb_details (desc, rating) values ('Good course', '4');
-insert into review_tb_details (desc, rating) values ('Awesome Course', '3');
-insert into review_tb_details (desc, rating) values ('Good for Beginners', '5');
+insert into review_tb_details (desc, rating, course_id) values ('Good course', '4', 1);
+insert into review_tb_details (desc, rating, course_id) values ('Awesome Course', '3', 1);
+insert into review_tb_details (desc, rating, course_id) values ('Good for Beginners', '5', 2);
 

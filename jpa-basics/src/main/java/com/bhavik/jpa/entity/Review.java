@@ -1,6 +1,7 @@
 package com.bhavik.jpa.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,11 @@ public class Review {
 
     @Column(name = "rating")
     private String rating;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    @JsonIgnore
+    Course course;
 
     public Review(String description, String rating){
         this.description = description;
