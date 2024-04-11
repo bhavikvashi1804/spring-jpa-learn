@@ -20,7 +20,7 @@ public class Trainee {
     @Column( name = "trainee_name")
     private String name;
 
-    @ManyToOne( cascade = CascadeType.PERSIST)
+    @ManyToOne( cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn( name = "guide_id")
     @JsonIgnore
     Guide guide;

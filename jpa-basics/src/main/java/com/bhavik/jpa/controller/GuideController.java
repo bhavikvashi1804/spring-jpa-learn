@@ -52,4 +52,14 @@ public class GuideController {
     public void removeTrainee(@PathVariable Long guideId, @PathVariable Long traineeId){
         guideRepo.removeTrainee(guideId, traineeId);
     }
+
+    @DeleteMapping()
+    public void removeGuide(@RequestParam Long guideId){
+        guideRepo.removeGuide(guideId);
+    }
+
+    @DeleteMapping("trainee")
+    public void removeTrainee(@RequestParam Long traineeId){
+        guideRepo.removeTrainee(traineeId);
+    }
 }

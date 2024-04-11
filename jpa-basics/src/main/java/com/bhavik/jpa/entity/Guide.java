@@ -25,7 +25,7 @@ public class Guide {
         this.name = name;
     }
 
-    @OneToMany( mappedBy = "guide", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "guide", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Trainee> trainees = new ArrayList<>();
 
     public void addTrainee(Trainee trainee){

@@ -61,4 +61,16 @@ public class GuideRepo {
         entityManager.persist(guide);
     }
 
+    @Transactional
+    public void removeGuide(Long guideId){
+        Guide guide = entityManager.find(Guide.class, guideId);
+        entityManager.remove(guide);
+    }
+
+    @Transactional
+    public void removeTrainee(Long traineeId){
+        Trainee trainee = entityManager.find(Trainee.class, traineeId);
+        entityManager.remove(trainee);
+    }
+
 }
