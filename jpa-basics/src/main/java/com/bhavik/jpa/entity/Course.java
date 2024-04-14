@@ -46,10 +46,12 @@ public class Course {
     }
 
     public void addStudent(Student student){
+        student.courseList.add(this);
         this.studentList.add(student);
     }
 
     public void removeStudent(Student student){
+        student.courseList.remove(this);
         this.studentList.remove(student);
     }
 

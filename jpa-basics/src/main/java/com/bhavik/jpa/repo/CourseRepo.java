@@ -3,6 +3,7 @@ package com.bhavik.jpa.repo;
 
 import com.bhavik.jpa.entity.Course;
 import com.bhavik.jpa.entity.Review;
+import com.bhavik.jpa.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -65,5 +66,21 @@ public class CourseRepo {
         entityManager.persist(review2);
 
         return  course;
+    }
+
+    @Transactional
+    public void addStudent(Long courseId, Long studentId){
+        Course course = entityManager.find(Course.class, courseId);
+        Student student = entityManager.find(Student.class, studentId);
+        course.addStudent(student);
+        entityManager.persist(course);
+    }
+
+    @Transactional
+    public void removeStudent(Long courseId, Long studentId){
+        Course course = entityManager.find(Course.class, courseId);
+        Student student = entityManager.find(Student.class, studentId);
+        course.removeStudent(student);
+        entityManager.persist(course);
     }
 }

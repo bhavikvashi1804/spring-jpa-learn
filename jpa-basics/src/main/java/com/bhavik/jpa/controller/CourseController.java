@@ -53,4 +53,15 @@ public class CourseController {
         Course course = courseRepo.addDummyReviews(id);
         return  course;
     }
+
+    @PostMapping("students/add")
+    public void addStudent(@RequestParam Long courseId, @RequestParam Long studentId){
+        courseRepo.addStudent(courseId, studentId);
+    }
+
+    @DeleteMapping("students/remove")
+    public void removeStudent(@RequestParam Long courseId, @RequestParam Long studentId){
+        courseRepo.removeStudent(courseId, studentId);
+    }
+
 }
