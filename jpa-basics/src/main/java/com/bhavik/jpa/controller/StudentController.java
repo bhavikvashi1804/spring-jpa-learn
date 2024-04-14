@@ -50,4 +50,14 @@ public class StudentController {
     public void test(){
         studentRepo.saveStudentWithPassport();
     }
+
+    @PostMapping("addCourse")
+    public void addCourse(@RequestParam Long studentId, @RequestParam Long courseId){
+        studentRepo.addCourse(studentId, courseId);
+    }
+
+    @DeleteMapping("removeCourse")
+    public void removeCourse(@RequestParam Long studentId, @RequestParam Long courseId){
+        studentRepo.removeCourse(studentId, courseId);
+    }
 }

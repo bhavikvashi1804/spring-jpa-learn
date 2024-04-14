@@ -1,6 +1,7 @@
 package com.bhavik.jpa.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Passport {
     private String number;
 
     @OneToOne(mappedBy = "passport")
+    @JsonIgnore
     Student student;
 
     public Passport(String number){

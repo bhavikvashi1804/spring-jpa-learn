@@ -1,6 +1,7 @@
 package com.bhavik.jpa.repo;
 
 
+import com.bhavik.jpa.entity.Course;
 import com.bhavik.jpa.entity.Passport;
 import com.bhavik.jpa.entity.Student;
 import jakarta.persistence.EntityManager;
@@ -47,6 +48,28 @@ public class StudentRepo {
         Student student = new Student("Smit Modi");
         student.setPassport(passport);
         entityManager.persist(student);
+    }
+
+    @Transactional
+    public void addCourse(Long studentId, Long courseId){
+        Student student = entityManager.find(Student.class, studentId);
+        Course course = entityManager.find(Course.class, courseId);
+
+        student.addCourse(course);
+
+        entityManager.persist(student);
+    }
+
+    @Transactional
+    public void removeCourse(Long studentId, Long courseId){
+        Student student = entityManager.find(Student.class, studentId);
+
+        Course course = student.getCourseList().stream().filter(x -> x.getId().equals(courseId)).findFirst().orElse(null);
+
+        if(course != null){
+            student.removeCourse(course);
+            entityManager.persist(student);
+        }
     }
 
 }
