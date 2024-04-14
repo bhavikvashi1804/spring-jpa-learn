@@ -3,6 +3,9 @@ package com.bhavik.jpa.controller;
 import com.bhavik.jpa.entity.Book;
 import com.bhavik.jpa.repo.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,14 +32,19 @@ public class BookController {
         return bookRepo.findAll();
     }
 
-    @GetMapping("/test/asc")
-    public Sort.Direction getDirection(){
-        return Sort.Direction.ASC;
+
+    @GetMapping("/pagination")
+    public Page<Book> getBooks(@RequestParam(defaultValue = "0") int page,
+                               @RequestParam(defaultValue = "10") int size,
+                               Pageable pageable) {
+        return bookRepo.findAll(pageable);
     }
 
-    @GetMapping("/test/desc")
-    public Sort.Direction getDirection1(){
-        return Sort.Direction.DESC;
+
+    @GetMapping("page-sort")
+    public Page<Book> getBooks(Pageable pageable) {
+        return bookRepo.findAll(pageable);
     }
+
 
 }
